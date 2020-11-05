@@ -9,3 +9,18 @@ before_install:
 
 script:
   - docker run -e CI=true stephengrider/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region:  "us-east-1"
+  app: "docker"
+  env: "docker-env"
+  bucket_name: 
+  bucket_path: "<app_name_above>"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+    # AWS_ACCESS_KEY and AWS_SECRET_KEY are added to Travis CI env variables from AWS by the user.

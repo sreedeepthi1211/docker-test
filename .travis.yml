@@ -16,7 +16,7 @@ deploy:
   app: "docker"
   env: "docker-env"
   bucket_name: 
-  bucket_path: "<app value mentioned above>"
+  bucket_path: "<app value mentioned above>" # just to test commit.
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY

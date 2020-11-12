@@ -10,17 +10,17 @@ before_install:
 script:
   - docker run -e CI=true sree/docker-test npm run test
 
-#deploy:
- # provider: elasticbeanstalk
-  #region:  "us-east-1"
-  #app: "docker"
-  #env: "docker-env"
-  #bucket_name: 
-  #bucket_path: "<app value mentioned above>" # just to test commit.
-  #on:
-  #  branch: master
-  #access_key_id: $AWS_ACCESS_KEY
-  #secret_access_key:
-  #  secure: "$AWS_SECRET_KEY"
+deploy:
+  provider: elasticbeanstalk
+  region:  "us-east-2"
+  app: "docker"
+  env: "docker-test"
+  bucket_name: elasticbeanstalk-us-east-2-907087174207
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
 
     # AWS_ACCESS_KEY and AWS_SECRET_KEY are added to Travis CI env variables from AWS by the user.
